@@ -43,6 +43,10 @@ class Main{
       /* Start opening session */
       JSch jsch=new JSch();
       Session session=jsch.getSession(user, host, 22);
+      java.util.Properties config = new java.util.Properties(); 
+      config.put("StrictHostKeyChecking", "no");
+      session.setConfig(config);
+
 
       // username and password will be given via UserInfo interface.
       session.setPassword(password);
