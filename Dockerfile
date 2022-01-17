@@ -22,7 +22,6 @@ RUN mvn install
 #Compile our test application
 WORKDIR /usr/src/jsch/CITest
 RUN mvn install
-#Create a dummy file
-#start ssh server
-#Run the application
-CMD echo "this is a stupid file." > test.txt; service ssh start && tail -f /var/log/messages 
+#Create a dummy file && start ssh server && start a bash so we can run commands
+CMD service ssh start && /bin/bash
+
