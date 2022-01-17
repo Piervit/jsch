@@ -26,4 +26,3 @@ RUN mvn install
 #start ssh server
 #Run the application
 CMD echo "this is a stupid file." > test.txt; service ssh start ; java -jar target/testjsch-*-with-dependencies.jar test.txt sshuser@127.0.0.1:/home/sshuser/test.txt pass; cat /home/sshuser/test.txt
-~
