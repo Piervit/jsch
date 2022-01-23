@@ -3,10 +3,12 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                timeout(time: 2, unit: 'MINUTES') {
+                dir('/usr/src/jsch/CITest'){
+                  timeout(time: 2, unit: 'MINUTES') {
                     retry(2) {
                         sh 'ls'
                     }
+                  }
                 }
             }
         }
