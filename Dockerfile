@@ -7,7 +7,6 @@ ENV PASSWORD=pass
 #Add the current application we want to manage to the docker container.
 COPY . /usr/src/jsch
 WORKDIR /usr/src/jsch
-RUN chown -R 1000:1000 /usr/src/jsch 
 #update application cache
 RUN apt-get update
 #install openjdk and maven
@@ -18,12 +17,12 @@ RUN apt-get install -y openssh-server
 #Add user to be used in the ssh connection
 RUN useradd -ms /bin/bash sshuser
 RUN echo "sshuser:pass" | chpasswd  sshuser
-USER 1000
 #Compile the library jsch
 RUN mvn install
 #Compile our test application
 WORKDIR /usr/src/jsch/CITest
 RUN mvn install
+RUN chown -R 1000:1000 /usr/src/jsch 
 #Create a dummy file && start ssh server && start a bash so we can run commands
 CMD service ssh start && /bin/bash
 
