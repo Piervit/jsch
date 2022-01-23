@@ -3,7 +3,11 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-              sh "ls"
+                timeout(time: 2, unit: 'MINUTES') {
+                    retry(2) {
+                        sh 'ls'
+                    }
+                }
             }
         }
     }
