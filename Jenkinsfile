@@ -1,8 +1,6 @@
 pipeline {
     agent { 
-        dockerfile {
-            args '-u 1000:1000'
-        }
+        dockerfile true
     }
     stages {
         stage('Test') {
