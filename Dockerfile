@@ -20,6 +20,7 @@ RUN echo "sshuser:pass" | chpasswd  sshuser
 #Compile the library jsch
 RUN mvn install
 #Compile our test application
+WORKDIR /usr/src/jsch/CITest
 RUN mvn install
 #Create a dummy file && start ssh server && start a bash so we can run commands
 CMD service ssh start && /bin/bash
