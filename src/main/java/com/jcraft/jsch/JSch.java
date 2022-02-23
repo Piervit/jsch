@@ -271,7 +271,7 @@ public class JSch{
     if(host==null){
       throw new JSchException("host must not be null.");
     }
-    Session s = new Session(this, username, host, 14); 
+    Session s = new Session(this, username, host, port); 
     return s;
   }
 
